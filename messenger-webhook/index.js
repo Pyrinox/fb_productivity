@@ -3,11 +3,28 @@
 // Imports dependencies and set up http server
 const
   express = require('express'),
+  // http = require('http'),
+  // path = require('path'),
   bodyParser = require('body-parser'),
+  // server = http.createServer(app).listen(80),
   app = express().use(bodyParser.json()); // creates express http server
 
+// HTML Stuff
+// app.use(express.static(path.join(__dirname)));
+// app.use(express.static(path.join(__dirname)));
+// app.use("/styles", express.static(__dirname));
+// app.use("/images", express.static(__dirname + '/images'));
+// app.use("/scripts", express.static(__dirname + '/scripts'));
+
 // Sets server port and logs message on success
+// app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+
+// server.listen(8000,'127.0.0.1',function(){
+//  server.close(function(){
+//    server.listen(8001,'192.168.0.202')
+//  })
+// })
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
@@ -50,7 +67,10 @@ app.get('/webhook', (req, res) => {
     
   // Checks if a token and mode is in the query string of the request
   if (mode && token) {
-  
+
+    // For static site only
+    // res.sendFile(path.join(__dirname + 'views/index.html'));
+
     // Checks the mode and token sent is correct
     if (mode === 'subscribe' && token === VERIFY_TOKEN) {
       
