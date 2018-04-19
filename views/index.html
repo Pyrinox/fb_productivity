@@ -1,88 +1,229 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>my fb app</title>
-	
-	<script>
-	  window.fbAsyncInit = function() {
-	    FB.init({
-	      appId      : '154386505397021',
-	      cookie     : true,
-	      xfbml      : true,
-	      version    : 'v2.12'
-	    });
-	      
-	    FB.AppEvents.logPageView();   
+	<head>
+		<title>my fb app</title>
+		
+		<script>
+		  window.fbAsyncInit = function() {
+		    FB.init({
+		      appId      : '154386505397021',
+		      cookie     : true,
+		      xfbml      : true,
+		      version    : 'v2.12'
+		    });
+		      
+		    FB.AppEvents.logPageView();   
 
-	    function statusChangeCallback(response){
-		  	if(response.status === "connected"){
-		  		console.log("Logged in and authenticated");
-		  		// window.location.replace('/overview');
-		  	} else {
-		  		console.log("Not authenticated")
-
+		    function statusChangeCallback(response){
+			  	if(response.status === "connected"){
+			  		console.log("Logged in and authenticated");
+			  		// window.location.replace('/overview');
+			  		centerLoggedInLogo();
+			  	} else {
+			  		console.log("Not authenticated")
+			  		centerLoggedOutLogo();
+			  	};
 		  	};
-	  	};
 
-	    FB.getLoginStatus(function(response) {
-				statusChangeCallback(response);
-				console.log("hi", response);
-			});
-	      
-	  };
+		    FB.getLoginStatus(function(response) {
+					statusChangeCallback(response);
+				});
+		      
+		    FB.Event.subscribe("auth.login", function() {
+		    	location.reload();
+		    });
 
-	  (function(d, s, id){
-	    var js, fjs = d.getElementsByTagName(s)[0];
-	    if (d.getElementById(id)) {return;}
-	    js = d.createElement(s); js.id = id;
-	    js.src = "https://connect.facebook.net/en_US/sdk.js";
-	    fjs.parentNode.insertBefore(js, fjs);
-	  }(document, 'script', 'facebook-jssdk'));
+		    FB.Event.subscribe("auth.logout", function() {
+		    	location.reload();
+		    });
 
+		  };
 
-	  // event handler for fb login button
-	  // function executeButtonAction(event){
+		  (function(d, s, id){
+		    var js, fjs = d.getElementsByTagName(s)[0];
+		    if (d.getElementById(id)) {return;}
+		    js = d.createElement(s); js.id = id;
+		    js.src = "https://connect.facebook.net/en_US/sdk.js";
+		    fjs.parentNode.insertBefore(js, fjs);
+		  }(document, 'script', 'facebook-jssdk'));
 
-	  // }
+	  	function centerLoggedInLogo() {
+	  		var logo = document.getElementById("logo");
+	  		logo.classList.remove("logo-logged-out");
+	  		logo.classList.add("logo-logged-in");
+	  		var login_button = document.getElementById("fb-login-button");
+	  		console.log("SDFKDS", login_button);
+	  		login_button.classList.remove("fb-login-button-logged-out");
+	  		login_button.classList.add("fb-login-button-logged-in");
+		  };
 
-	  const x = document.getElementsByTagName('button');
-
-	  console.log(x);
-
-	  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-
-
-
-	</script>
-
-
-
-
-</head>
-<body>
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=154386505397021&autoLogAppEvents=1';
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-	
-
-	<p>this is my simple website</p>
-	
-
-	<button class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true" data-auto-logout-link="true" data-use-continue-as="false" data-scope="public_profile,email,user_birthday"></button>
-	<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-	</fb:login-button> -->
+		  function centerLoggedOutLogo() {
+		  	var logo = document.getElementById("logo");
+	  		logo.classList.remove("logo-logged-in");
+	  		logo.classList.add("logo-logged-out");
+	  		var login_button = document.getElementById("fb-login-button");
+	  		login_button.classList.remove("fb-login-button-logged-in");
+	  		login_button.classList.add("fb-login-button-logged-out");
+		  };
 
 
-</body>
+
+
+		  const x = document.getElementsByTagName('button');
+
+		  console.log(x);
+
+
+		  // function testAPI() {
+	   //  console.log('Welcome!  Fetching your information.... ');
+	   //  FB.api('/me', function(response) {
+	   //    console.log('Successful login for: ' + response.name);
+	   //    document.getElementById('status').innerHTML =
+	   //      'Thanks for logging in, ' + response.name + '!';
+	   //  });
+
+
+
+		</script>
+	</head>
+
+	<body>
+		<!-- <div id="fb-root"></div> -->
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=154386505397021&autoLogAppEvents=1';
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+		
+
+		<!-- <p>this is my simple website</p> -->
+
+		<style>
+
+			/*SETTING UP PAGE*/
+			html {
+		  	height: 100%;
+			}
+
+			body {
+			  min-height: 100%;
+			  margin: 0px;
+			}
+
+			/*SETTING UP GRID*/
+			#container {
+				display: grid;
+				/*grid-auto-columns: auto;*/
+				grid-template-columns: repeat(1, minmax(200px, 1fr));
+				grid-template-rows: 100px auto 80px;
+
+			}
+
+			/*NAV SECTION*/
+			#nav-bar {
+				position: relative;
+				top: 20px;
+				display: flex;
+				justify-content: flex-end;
+			}
+
+			#nav-bar .opt {
+				padding: 5px;
+				margin: 20px 2vw;
+			}
+
+			#nav-bar #opt-3 {
+				margin-right: 75px;
+			}
+
+			/*START SECTION*/
+			#start #row-1 {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			#start #col-1 {
+				display:flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				align-items: center;
+				align-content: stretch;
+				min-width:300px;
+				min-height: 200px;
+			}
+
+			/*logo*/
+			#start > #row-1 > #col-1 > #logo {
+				position: relative;
+				min-width: 120px;
+				min-height: 120px;
+			}
+
+			#start > #row-1 > #col-1 > .logo-logged-out {
+				left: 45px;
+			}
+
+			#start > #row-1 > #col-1 > .logo-logged-in {
+				left: 43px;
+			}
+
+
+			/*fb login*/
+			#start > #row-1 > #col-1 #fb-login-button {
+				position: relative;
+				min-width: 300px;
+				min-height: 62px;
+			}
+
+			#start > #row-1 > #col-1 .fb-login-button-logged-out {
+				left: 68px;
+			}
+
+			#start > #row-1 > #col-1 .fb-login-button-logged-in { 
+				left: 105px;
+			}
+
+
+
+			#start > #row-1 > #col-2 {
+				overflow: hidden;
+			}
+
+
+
+
+
+
+		</style>
+
+		<div id="container">
+			<div id="nav">
+				<div id="nav-bar">
+					<div class="opt" id="opt-1">Features</div>
+					<div class="opt" id="opt-2">For Developers</div>
+					<div class="opt" id="opt-3">For Organizations</div>
+				</div>
+			</div>
+			<div id="start">
+				<div id="row-1">
+					<div id="col-1">
+						<img id="logo" class="logo-logged-out" src="https://static.xx.fbcdn.net/rsrc.php/v3/yu/r/E7EoZUnicBS.png" width="120px" height="120px">
+						<div id="product-name">FB-Productivity</div>
+						<div id="fb-login-button" class="fb-login-button fb-login-button-logged-out" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true" data-auto-logout-link="true" data-use-continue-as="false" data-scope="public_profile,email,user_birthday"></div>
+					</div>
+					<div id="col-2">	
+						<div id="image-frame">
+							<img src="https://static.xx.fbcdn.net/rsrc.php/v3/yV/r/6aTyvDkCYVb.png">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="body-1"></div>
+			<div id="end"></div>
+			
+		</div>
+	</body>
 </html>
