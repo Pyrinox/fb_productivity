@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <title>Data Vis</title>
+  <link rel="stylesheet" href = "https://bootswatch.com/4/darkly/bootstrap.min.css">
+  <style media="screen">
+    #profile{display:none}
+  </style>
+</head>
+<body>
+
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId      : '2089120317770647',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v2.8'
+      });      
+     
+      FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+
+    function statusChangeCallback(response) {
+      if (response.status === 'connected') {
+        console.log('Logged in and authenticated');
+      } else {
+        console.log('Not authenticated');
+      }
+    }
+
+    function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+      });
+    }
+  </script>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+            <fb:login-button 
+              scope="public_profile,email"
+              onlogin="checkLoginState();">
+            </fb:login-button>
+          </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h3 id="heading">Log in to view your profile</h3>
+    <div id="profile"></div>
+  </div>
+  
+</body>
+</html>
