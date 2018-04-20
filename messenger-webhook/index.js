@@ -1,30 +1,33 @@
 'use strict';
 
+// Reference: https://developers.facebook.com/docs/messenger-platform/getting-started/app-setup
+
 // Imports dependencies and set up http server
 const
   express = require('express'),
-  // http = require('http'),
-  // path = require('path'),
   bodyParser = require('body-parser'),
-  // server = http.createServer(app).listen(80),
-  app = express().use(bodyParser.json()); // creates express http server
+  app = express().use(bodyParser.json());
 
-// HTML Stuff
-// app.use(express.static(path.join(__dirname)));
-// app.use(express.static(path.join(__dirname)));
-// app.use("/styles", express.static(__dirname));
-// app.use("/images", express.static(__dirname + '/images'));
-// app.use("/scripts", express.static(__dirname + '/scripts'));
+  // var https = require('https');
+  // var server = https.createServer(app).listen(config.port, () => console.log('webhook is listening') {
+  //     console.log('Https App started');
+  // });
 
-// Sets server port and logs message on success
-// app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
-app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+//   var http = require('http');
+// http.createServer(function (req, res) {
+//   res.writeHead(200, {'Content-Type': 'text/plain'});
+//   res.write('Hello World!');
+//   res.end();
+// }).listen(8080, "http://afx-data-vis-sp18.herokuapp.com");
 
-// server.listen(8000,'127.0.0.1',function(){
-//  server.close(function(){
-//    server.listen(8001,'192.168.0.202')
-//  })
-// })
+app.listen(process.env.PORT || 1337, () => console.log('HELLO WORLD'));
+
+  // hostname = "afx-data-vis-sp18.herokuapp.com",
+  // server = app.listen(process.env.PORT, function () {
+  //   var host = server.address().address;
+  //   var port = server.address().port;
+  //   console.log('running at http://' + host + ':' + port)
+  // });
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
