@@ -20,7 +20,7 @@ const
 //   res.end();
 // }).listen(8080, "http://afx-data-vis-sp18.herokuapp.com");
 
-app.listen(process.env.PORT || 1337, () => console.log('HELLO WORLD'));
+app.listen(process.env.PORT || 1337, () => console.log('BYE WORLD'));
 
   // hostname = "afx-data-vis-sp18.herokuapp.com",
   // server = app.listen(process.env.PORT, function () {
@@ -31,7 +31,7 @@ app.listen(process.env.PORT || 1337, () => console.log('HELLO WORLD'));
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
- 
+  console.log("SDFKLDJFKSD");
   let body = req.body;
 
 
