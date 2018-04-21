@@ -60,7 +60,7 @@ app.post('/webhook', (req, res) => {
 });
 
 
-PAGE_ACCESS_TOKEN="EAACMaejP8x0BABZB4zmo69shDHZABiGYjgkySpBKq3sS8yhZBsQqnCRxOoUqVwBZBAyzSMgrwZAbZCtjHBL2wlAVJ8GpZC3TKbZCY8ZCcnmrJKSG1RYcinJ27KuWinoAr2Dp9AbFBYpew149hqPaFadEiplXqIQoZCDkVsPnZACVbCXdAZDZD";
+let PAGE_ACCESS_TOKEN="EAACMaejP8x0BABZB4zmo69shDHZABiGYjgkySpBKq3sS8yhZBsQqnCRxOoUqVwBZBAyzSMgrwZAbZCtjHBL2wlAVJ8GpZC3TKbZCY8ZCcnmrJKSG1RYcinJ27KuWinoAr2Dp9AbFBYpew149hqPaFadEiplXqIQoZCDkVsPnZACVbCXdAZDZD";
 
 // Adds support for GET requests to our webhook
 app.get('/webhook', (req, res) => {
