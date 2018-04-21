@@ -20,7 +20,7 @@ const
 //   res.end();
 // }).listen(8080, "http://afx-data-vis-sp18.herokuapp.com");
 
-app.listen(process.env.PORT || 1337, () => console.log('BYE WORLD'));
+app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
   // hostname = "afx-data-vis-sp18.herokuapp.com",
   // server = app.listen(process.env.PORT, function () {
@@ -31,7 +31,6 @@ app.listen(process.env.PORT || 1337, () => console.log('BYE WORLD'));
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
-  console.log("SDFKLDJFKSD");
   let body = req.body;
 
 
@@ -45,6 +44,10 @@ app.post('/webhook', (req, res) => {
       // will only ever contain one message, so we get index 0
       let webhook_event = entry.messaging[0];
       console.log(webhook_event);
+
+      // Get the sender PSID
+      let sender_psid = webhook_event.sender.id;
+      console.log('Sender PSID: ' + sender_psid);
     });
 
     // Returns a '200 OK' response to all requests
@@ -56,6 +59,8 @@ app.post('/webhook', (req, res) => {
 
 });
 
+
+PAGE_ACCESS_TOKEN="EAACMaejP8x0BABZB4zmo69shDHZABiGYjgkySpBKq3sS8yhZBsQqnCRxOoUqVwBZBAyzSMgrwZAbZCtjHBL2wlAVJ8GpZC3TKbZCY8ZCcnmrJKSG1RYcinJ27KuWinoAr2Dp9AbFBYpew149hqPaFadEiplXqIQoZCDkVsPnZACVbCXdAZDZD";
 
 // Adds support for GET requests to our webhook
 app.get('/webhook', (req, res) => {

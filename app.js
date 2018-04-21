@@ -1,3 +1,5 @@
+const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
 
