@@ -6,7 +6,7 @@
 const
   express = require('express'),
   bodyParser = require('body-parser'),
-  handlers = require('./app.js')
+  handlers = require('./app.js'),
   app = express().use(bodyParser.json());
 
   // var https = require('https');
