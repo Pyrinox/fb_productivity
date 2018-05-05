@@ -6,8 +6,10 @@
 const
   express = require('express'),
   bodyParser = require('body-parser'),
-  handlers = require('./app.js'),
+  // handlers = require('./app'),
   app = express().use(bodyParser.json());
+
+import handlers from './app';
 
   // var https = require('https');
   // var server = https.createServer(app).listen(config.port, () => console.log('webhook is listening') {
@@ -53,9 +55,9 @@ app.post('/webhook', (req, res) => {
       // Check if the event is a message or postback and
       // pass the event to the appropriate handler function
       if (webhook_event.message) {
-        handleMessage(sender_psid, webhook_event.message);        
+        handlers.handleMessage(sender_psid, webhook_event.message);        
       } else if (webhook_event.postback) {
-        handlePostback(sender_psid, webhook_event.postback);
+        handlers.handlePostback(sender_psid, webhook_event.postback);
       }
     });
 

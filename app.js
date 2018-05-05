@@ -1,4 +1,4 @@
-const axios = require('axios')
+const axios = require('axios');
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
