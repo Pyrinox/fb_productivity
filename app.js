@@ -4,6 +4,7 @@ var handlers = module.exports = {};
 const axios = require('axios');
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
+const USER_ACCESS_TOKEN = "EAACMaejP8x0BAP1ksJ87BnMpqkYUwaBTpQQcZAHlAX0VjKz5LBs647HJ37gJ23kGTjZA7MJzseGpC1zsCdFD7bZACXTogfveNxzRKSAhZCq7jAcsRM2JKuHcW3Wi7Mnr6ZAB4ZBDISsppEU0ZBuWGkHdCkZBSzNiPYxBvloEXyGb0HLoAMUiZCyhR2z5hFF1U7BXZB1Rcp0ZABa1QZDZD";
 
 // Handles messages events
 handlers.handleMessage = (sender_psid, received_message) => {
@@ -44,7 +45,7 @@ handlers.callSendAPI = (sender_psid, response) => {
 		if (!err) {
 			console.log('message sent!')
 		} else {
-			console.error("Unable to send message:" + err);
+			console.error("Unable to send message: " + err);
 		}
 	});
 
