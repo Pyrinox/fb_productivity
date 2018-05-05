@@ -44,7 +44,7 @@ handlers.callSendAPI = (sender_psid, response) => {
 		"method": "POST",
 		"json": request_body
 	})
-	.then((err, res, body)=> {
+	.catch((err, res, body)=> {
 		if (!err) {
 			console.log('message sent!')
 		} else {
