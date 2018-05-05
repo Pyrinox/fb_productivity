@@ -1,9 +1,12 @@
+var handlers = module.exports = {};
+
+
 const axios = require('axios');
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 // Handles messages events
-function handleMessage(sender_psid, received_message) {
+handlers.handleMessage = (sender_psid, received_message) => {
 	let response;
 
 	// Check if the message contains text
@@ -20,12 +23,12 @@ function handleMessage(sender_psid, received_message) {
 }
 
 // Handles messaging_postbacks events
-function handlePostback(sender_psid, received_postback) {
+handlers.handlePostback= (sender_psid, received_postback) => {
 
 }
 
 // Sends response messages via the Send API
-function callSendAPI(sender_psid, response) {
+handlers.callSendAPI = (sender_psid, response) => {
 	// Construct the message body
 	let request_body = {
 	"recipient": {

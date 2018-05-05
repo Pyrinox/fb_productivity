@@ -6,10 +6,9 @@
 const
   express = require('express'),
   bodyParser = require('body-parser'),
-  // handlers = require('./app'),
+  handlers = require('./app'),
   app = express().use(bodyParser.json());
 
-import handlers from './app';
 
   // var https = require('https');
   // var server = https.createServer(app).listen(config.port, () => console.log('webhook is listening') {
