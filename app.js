@@ -18,7 +18,7 @@ handlers.handleMessage = (sender_psid, received_message) => {
 	}
 
 	// Sends the response message
-	callSendAPI(sender_psid, response);
+	handlers.callSendAPI(sender_psid, response);
 
 }
 
