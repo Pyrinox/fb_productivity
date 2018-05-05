@@ -39,19 +39,29 @@ handlers.callSendAPI = (sender_psid, response) => {
 	}
 
 	// Send the HTTP request to the Messenger Platform
-	axios({
-		"url": "https://graph.facebook.com/v2.12/me/messages",
-		"qs": { "access_token": PAGE_ACCESS_TOKEN },
-		"method": "POST",
-		"json": request_body
-	})
-	.catch((err, res, body)=> {
+	const url = `https://graph.facebook.com/v2.12/me/messages?access_token=${PAGE_ACCESS_TOKEN}`
+	axios.post(url, request_body).catch((err, res, body)=> {
 		if (!err) {
 			console.log('message sent!')
 		} else {
 			console.error("Unable to send message:" + err);
 		}
 	});
+
+
+	// axios({
+	// 	"url": "https://graph.facebook.com/v2.12/me/messages",
+	// 	"qs": { "access_token": PAGE_ACCESS_TOKEN },
+	// 	"method": "POST",
+	// 	"json": request_body
+	// })
+	// .catch((err, res, body)=> {
+	// 	if (!err) {
+	// 		console.log('message sent!')
+	// 	} else {
+	// 		console.error("Unable to send message:" + err);
+	// 	}
+	// });
 
 
 	// request({
